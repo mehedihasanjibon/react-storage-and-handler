@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { add } from '../../utilities/calculate';
+import { add, getTotal } from '../../utilities/calculate';
 import Cosmetic from '../Cosmetic/Cosmetic';
 // import add from '../../utilities/calculate';
 
 const Cosmetics = () => {
     const first = 55;
     const second = 66;
-    const total = add(first, second);
+    const total1 = add(first, second);
 
 
     // const cosmetics = [
@@ -51,10 +51,14 @@ const Cosmetics = () => {
         .then(data => setCosmetics(data))
     },[])
 
+    const total = getTotal(cosmetics);
+
     return (
         <div>
             <h1> Welcome to my Cosmetics store </h1>
-            <p> Total: {total}</p>
+            <p> Total: {total1}</p>
+            
+            <p> Money needed: {total} </p>
 
             {
                 cosmetics.map(cosmetic => <Cosmetic
